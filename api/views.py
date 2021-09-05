@@ -17,7 +17,7 @@ class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
     authentication_classes = (TokenAuthentication, )
-    permission_classes = (IsAuthenticated)
+    permission_classes = (IsAuthenticated,)
 
     @action(detail=True, methods=['POST'])
     def rate_movie(self, request, pk=None):
@@ -48,7 +48,7 @@ class RatingViewSet(viewsets.ModelViewSet):
     queryset = Rating.objects.all()
     serializer_class = RatingSerializer
     authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsAuthenticated)
+    permission_classes = (IsAuthenticated,)
 
     def create(self, request, *args, **kwargs):
         response = {'message': 'You cant create rating like that'}
